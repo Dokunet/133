@@ -1,0 +1,54 @@
+<html>
+
+<head>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+	<script src="events.js"></script>
+	<script src="output_constructor.js"></script>
+	<script src="apiCall.js"></script>
+	<script src="date_manager.js"></script>
+</head>
+
+<body>
+	<h1>Stundenplan GIBM</h1>
+
+	<br>
+	<br>
+
+	<div>
+		<h4>Berufsgruppe</h4>
+		<select id="job_selector">
+			<option value="preset">...</option>
+
+		</select>
+	</div>
+
+	<br>
+
+	<div>
+		<h4>Klassenauswahl</h4>
+		<select id="class_selector">
+			<option value="preset">...</option>
+		</select>
+	</div>
+
+
+<br>
+<br>
+
+	<div id="wrapper">
+		
+		<div class="btn-group">
+			<button type="button" class="btn btn-primary"> <- </button>
+			<div id="date"></div>
+			<button type="button" class="btn btn-primary">-></button>
+		  </div>
+
+		<div id="time_table"></div>
+	
+	</div>
+
+</body>
+
+</html>
