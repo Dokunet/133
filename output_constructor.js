@@ -13,11 +13,14 @@ function build_table(schedule) {
 	});
 	lessons +="</table>";
 
-	
+	$('.table').slideDown("slow");
 	$("#time_table").empty();
+	$('.table').slideDown("slow");
 	$('#time_table').append(lessons);
+	$('.table').slideDown("slow");
 	$('.btn-group').css('visibility', 'visible');
 	$("#date").empty();
-	$("#date").append(get_current_week());
+	get_date();
+	
 }
 

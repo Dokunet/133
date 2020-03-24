@@ -1,4 +1,5 @@
 function apiCall(source, destination) {
+    console.log(source);
     $.getJSON(source, function (result) {
         if (destination != null) {
             $("#class_selector").empty();
