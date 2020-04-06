@@ -13,5 +13,7 @@ function apiCall(source, destination) {
            // wenn kein Ziel ort mitgegeben wurde, soll der Stundeplan ertellt werden.
             build_table(result);
         }
+    }).fail(function(){
+        alert("Bei der Anfrage an den Server ist etwas schief gelaufen. Versuchen Sie es später nocheinmal");
     });
 }

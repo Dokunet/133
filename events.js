@@ -4,16 +4,27 @@ $(function () {
 	//Event welches auf das selektieren eine Berufs wartet. Da bereits nach jedem refresh die Berufe geholt werden, ist ein Api Call hier unnötig
 	$('#job_selector').change(function () { 
 		$("#class_selector").empty();
+		$("#time_table").empty();
 		$("#class_selector").append('<option value="">...</option>');
+		$("#class_selector").hide();
 		//Der Ausgewählt Beruf wird in den Localstorage geschrieben
 		localStorage.setItem('job', $(this).val());
 		//mit dem ausgewählten Beruf wird ein Api Call ausgeführt welcher alle Klassen des jeweiligen Berufs holt
-		apiCall('http://sandbox.gibm.ch/klassen.php?beruf_id=' + $(this).val(), '#class_selector'); });
+		apiCall('http://sandbox.gibm.ch/klassen.php?beruf_id=' + $(this).val(), '#class_selector'); 
+		//der Klassen Selektor wird sichtbar gemacht sobald ein Beruf ausgewählt wurde. Dies hat nur ein Effekt wenn keine Daten gecached sind
+		$("#class_selector_div").css('visibility', 'visible');
+		$("#class_selector").show("slow");
+	});
+
 	//Event welches auf das Selektieren einer Klasse wartet
 	$('#class_selector').change(function () {
 		//Die Klasse wird in den Localstorage geschrieben und ein API Call wird ausgeführt welcher die Lektionen der Klasse holt und einen Stundenplan zusammen baut
 		localStorage.setItem("class", $(this).val());
-		apiCall('http://sandbox.gibm.ch/tafel.php?klasse_id=' + $(this).val(), null);
+		if(localStorage.getItem('current_week')!= null && localStorage.getItem('current_week')!=''){
+		apiCall('http://sandbox.gibm.ch/tafel.php?klasse_id=' + $(this).val()+"&woche="+localStorage.getItem('current_week')+$('#regex').text()+localStorage.getItem('current_year'), null);
+		} else {
+			apiCall('http://sandbox.gibm.ch/tafel.php?klasse_id=' + $(this).val(), null);
+		}
 	});
 	// Event welches auf das Verändern des Datum wartet
 	$('#last_week').click(function () {
@@ -38,6 +49,7 @@ $(function () {
 	});
 	// Event welches auf das Verändern des Datum wartet
 	$('#next_week').click(function () {
+		$("table").hide("slow");
 		let next_week = parseInt(localStorage.getItem('current_week'));
 		let next_year = parseInt(localStorage.getItem('current_year'));
 		//Logik welche es erlaubt, das Jahr zu wechseln

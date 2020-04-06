@@ -12,39 +12,11 @@ body {
 select {
 	width: 100%;		
 }
-
-
-.lesson{
-	width: 100%;
-	background-color: aqua;
-	border-top-color: black;
-}
-
 #wrapper{
 	width: 50%;
 	height: 60%;
 }
 
-
-.grid-container {
-	display: grid;
-	grid-template-columns: auto auto auto;
-	grid-gap: 5px;
-	background-color: #2196F3;
-	padding: 10px;
-  }
-  
-  .grid-container > div {
-	background-color: rgba(255, 255, 255, 0.8);
-	text-align: center;
-	padding: 20px 0;
-	font-size: 30px;
-  }
-
-  .grid-container > .item4 {
-	grid-gap: 0px;
-	padding: 10px;
-  }
   .btn-group {
 	  visibility: hidden;
   }
